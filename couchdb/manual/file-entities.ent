@@ -1,0 +1,5 @@
+<!ENTITY reference.couchdb.reference SYSTEM './couchdb/reference.xml'>
+<!ENTITY reference.couchdb.constants SYSTEM './couchdb/constants.xml'>
+<!ENTITY reference.couchdb.ini SYSTEM './couchdb/ini.xml'>
+<!ENTITY reference.couchdb.configure SYSTEM './couchdb/configure.xml'>
+<!ENTITY reference.couchdb.functions SYSTEM './functions.xml'>

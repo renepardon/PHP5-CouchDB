@@ -1,0 +1,3 @@
+[submodule "vendor/pillowtalk"]
+	path = vendor/pillowtalk
+	url = git@github.com:renepardon/pillowtalk.git

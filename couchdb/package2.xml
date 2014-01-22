@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<package version="2.0" xmlns="http://pear.php.net/dtd/package-2.0"
+    xmlns:tasks="http://pear.php.net/dtd/tasks-1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0
+http://pear.php.net/dtd/tasks-1.0.xsd
+http://pear.php.net/dtd/package-2.0
+http://pear.php.net/dtd/package-2.0.xsd">
+
+  <name>couchdb</name>
+  <channel>pear.php.de</channel>
+
+  <summary>CouchDB Wrapper for PHP</summary>
+
+  <description>
+    About pillowtalk:
+    This library is a basic wrapper around libcurl and yajl that attempts to provide a more generic interface to CouchDB, mainly communicating via url targets rather than explicit method calls.
+    This extension uses pillowtalk to communicate with a CouchDB instance.
+    The extension was created with CodeGen_PECL installed through PEAR.
+  </description>
+
+  <lead>
+    <name>Christoph, René Pardon</name>
+    <user>renepardon</user>
+    <email>christoph@renepardon.de</email>
+    <active>yes</active>
+  </lead>
+
+  <date>2014-01-22</date>
+  <version>
+    <release>0.1.0</release>
+    <api>0.1.0</api>
+  </version>
+  <stability>
+    <release>alpha</release>
+    <api>alpha</api>
+  </stability>
+
+  <license uri="http://www.gnu.org/licenses/licenses.html#LGPL" filesource="LICENSE">LGPL 2.1</license>
+
+  <notes>
+      Initial release
+
+  </notes>
+
+  <contents>
+    <dir name="/">
+      <file role='doc' name='EXPERIMENTAL'/>
+      <file role='doc' name='CREDITS'/>
+      <file role='src' name='config.m4'/>
+      <file role='src' name='couchdb.c'/>
+      <file role='src' name='php_couchdb.h'/>
+      <dir name="tests">
+        <file role='test' name='CouchDB__getDatabases.phpt'/>
+        <file role='test' name='CouchDB__createDocument.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_revision.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_bare_info.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_update.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_delete.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_copy.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_get_attachment.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_add_attachment.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_delete_attachment.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_info.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_create.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_delete.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_documents.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_documents_rows.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_bulk_add_documents.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_changes.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_compact.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_compact_design_doc.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_ensure_full_commit.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_missing_revs.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_purge_historical_documents.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_view_execute.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_view_cleanup.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_find_by_id.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_find_by_revision.phpt'/>
+      </dir>
+    </dir>
+  </contents>
+
+  <dependencies>
+    <required>
+      <php>
+        <min>5.0.0</min>
+      </php>
+      <pearinstaller>
+        <min>1.4.0a1</min>
+      </pearinstaller>
+    <os><name>unix</name></os>
+    </required>
+  </dependencies>
+
+  <providesextension>couchdb</providesextension>
+
+  <extsrcrelease>
+   <configureoption name="with-couchdb" default="autodetect" prompt="couchdb installation directory?" />
+  </extsrcrelease>
+
+</package>

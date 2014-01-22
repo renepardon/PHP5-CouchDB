@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<!DOCTYPE package SYSTEM "http://pear.php.net/dtd/package-1.0">
+<package>
+
+  <name>couchdb</name>
+  <summary>CouchDB Wrapper for PHP</summary>
+  <description>
+    About pillowtalk:
+    This library is a basic wrapper around libcurl and yajl that attempts to provide a more generic interface to CouchDB, mainly communicating via url targets rather than explicit method calls.
+    This extension uses pillowtalk to communicate with a CouchDB instance.
+    The extension was created with CodeGen_PECL installed through PEAR.
+  </description>
+
+  <license>LGPL 2.1</license>
+
+  <configureoptions>
+   <configureoption name="with-couchdb" default="autodetect" prompt="couchdb installation directory?" />
+  </configureoptions>
+
+  <maintainers>
+    <maintainer>
+      <user>renepardon</user>
+      <name>Christoph, René Pardon</name>
+      <email>christoph@renepardon.de</email>
+      <role>lead</role>
+    </maintainer>
+  </maintainers>
+
+  <release>
+    <version>0.1.0</version>
+    <state>alpha</state>
+    <notes>      Initial release
+</notes>
+    <date>2014-01-22</date>
+  </release>
+  <changelog>
+    <release>
+      <version>0.1.0</version>
+      <date>2014-01-22</date>
+      <state>alpha</state>
+      <notes>First alpha version</notes>
+    </release>
+
+  </changelog>
+  <deps>
+    <dep type="php" rel="ge" version="5.0.0"/>
+    <dep type='os' rel='has' name='unix'/>
+  </deps>
+
+  <filelist>
+    <dir name="/">
+      <file role='doc' name='EXPERIMENTAL'/>
+      <file role='doc' name='CREDITS'/>
+      <file role='src' name='config.m4'/>
+      <file role='src' name='couchdb.c'/>
+      <file role='src' name='php_couchdb.h'/>
+      <dir name="tests">
+        <file role='test' name='CouchDB__getDatabases.phpt'/>
+        <file role='test' name='CouchDB__createDocument.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_revision.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_bare_info.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_update.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_delete.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_copy.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_get_attachment.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_add_attachment.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_delete_attachment.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_info.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_create.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_delete.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_documents.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_documents_rows.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_bulk_add_documents.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_changes.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_compact.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_compact_design_doc.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_ensure_full_commit.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_missing_revs.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_purge_historical_documents.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_view_execute.phpt'/>
+        <file role='test' name='CouchDB__couchdb_db_view_cleanup.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_find_by_id.phpt'/>
+        <file role='test' name='CouchDB__couchdb_document_find_by_revision.phpt'/>
+      </dir>
+    </dir>
+  </filelist>
+</package>

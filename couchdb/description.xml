@@ -1,0 +1,195 @@
+<?xml version="1.0" ?>
+<!DOCTYPE extension SYSTEM "../extension.dtd"> 
+<extension name="couchdb" version="0.9.0">
+  <summary>CouchDB Wrapper for PHP</summary>
+  <description>
+    About pillowtalk:
+    This library is a basic wrapper around libcurl and yajl that attempts to provide a more generic interface to CouchDB, mainly communicating via url targets rather than explicit method calls.
+    This extension uses pillowtalk to communicate with a CouchDB instance.
+    The extension was created with CodeGen_PECL installed through PEAR.
+  </description>
+  <maintainers>
+    <maintainer>
+      <user>renepardon</user>
+      <name>Christoph, René Pardon</name>
+      <email>christoph@renepardon.de</email>
+      <role>lead</role>
+    </maintainer>
+  </maintainers>
+
+  <license>LGPL</license>
+
+  <channel>pear.php.de</channel>
+
+  <release>
+    <version>0.1.0</version>
+    <date>2014-01-22</date>
+    <state>alpha</state>
+    <notes>
+      Initial release
+    </notes>
+  </release>
+
+  <changelog>
+    <release>
+      <version>0.1.0</version>
+      <date>2014-01-22</date>
+      <state>alpha</state>
+      <notes>First alpha version</notes>
+    </release>
+  </changelog>
+
+  <deps language="c" platform="unix">
+    <header name="pillowtalk_impl.h" prepend="yes" />
+    <with defaults="/usr:/usr/local:includes" />
+    <lib name="pillowtalk" platform="unix" />
+  </deps>
+  
+  <constants>
+    <constant name="COUCHDB_UUID_RANDOM" type="string" value="random">
+        128 bits of pure random awesomeness.
+    </constant>
+    <constant name="COUCHDB_UUID_SEQUENTIAL" type="string" value="sequential">
+        Monotonically increasing ids with random increments.
+    </constant>
+    <constant name="COUCHDB_UUID_UTC_RANDOM" type="string" value="utc_random">
+        Time since start of epoch, as 14 hex digits, followed by 18 random digits.
+    </constant>
+    <constant name="COUCHDB_UUID_UTC_ID_AND_PARAMETERS" type="string" value="utc_id">
+        Time since start of epoch, as 14 hex digits, followed by utc_id_suffix.
+    </constant>
+  </constants>
+  
+  <globals>
+    <global name="couchdb_sample_int" type="int" value="42" />
+
+    <phpini name="debug" type="bool" value="false" onupdate="OnUpdateBool" access="all">
+        Definition for directive "couchdb.debug"
+    </phpini>
+  </globals>
+  
+  <class name="CouchDB">
+      <property access="protected" name="db" type="string" value=""></property>
+  
+      <!-- DOCUMENT specific functions -->
+      <!-- GET /_all_dbs -->
+      <function name="getDatabases" access="public">
+          <summary>This method returns all available databases.</summary>
+          <description>No arguments required. An array of database names will be returned by this function.</description>
+          <proto>array getDatabases()</proto>
+      </function>
+
+      <!-- POST /databasename -->
+      <function name="createDocument" access="public">
+          <proto>string createDocument(string json)</proto>
+      </function>
+
+      <!-- GET /databasename/doc -->
+      <function name="couchdb_document_revision" access="public">
+      </function>
+      
+      <!-- HEAD /databasename/doc -->
+      <function name="couchdb_document_bare_info" access="public">
+      </function>
+
+      <!-- PUT /databasename/doc -->
+      <function name="couchdb_document_update" access="public">
+      </function>
+
+      <!-- DELETE /databasename/doc -->
+      <function name="couchdb_document_delete" access="public">
+      </function>
+      
+      <!-- COPY /databasename/doc -->
+      <function name="couchdb_document_copy" access="public">
+      </function>
+      
+      <!-- GET /databasename/doc/attachment -->
+      <function name="couchdb_document_get_attachment" access="public">
+      </function>
+
+      <!-- PUT /databasename/doc/attachment -->
+      <function name="couchdb_document_add_attachment" access="public">
+      </function>
+
+      <!-- DELETE /databasename/doc/attachment -->
+      <function name="couchdb_document_delete_attachment" access="public">
+      </function>
+
+      <!-- DB specific functions -->
+      <!-- GET /databasename -->
+      <function name="couchdb_db_info" access="public">
+      </function>
+
+      <!-- PUT /databasename -->
+      <function name="couchdb_db_create" access="public">
+      </function>
+      
+      <!-- DELETE /databasename -->
+      <function name="couchdb_db_delete" access="public">
+      </function>
+
+      <!-- GET /databasename/_all_docs Returns a build-in view of all documents in this database -->
+      <function name="couchdb_db_documents" access="public">
+      </function>
+      
+      <!-- POST /databasename/_all_docs Returns certain rows from the build-in view of all documents -->
+      <function name="couchdb_db_documents_rows" access="public">
+      </function>
+      
+      <!-- POST /databasename/_bulk_docs Adds multiple documents in to the database in a single request-->
+      <function name="couchdb_db_bulk_add_documents" access="public">
+      </function>
+      
+      <!-- GET /databasename/_changes -->
+      <function name="couchdb_db_changes" access="public">
+      </function>
+
+      <!-- POST /databasename/_compact Starts a compaction for the database -->
+      <function name="couchdb_db_compact" access="public">
+      </function>
+      
+      <!-- POST /databasename/_compact/design-doc Starts a compaction for all the views in the selected design document -->
+      <function name="couchdb_db_compact_design_doc" access="public">
+      </function>
+      
+      <!-- POST /databasename/_ensure_full_commit Make sure all uncommitted changes are written and synchronized to the disk -->
+      <function name="couchdb_db_ensure_full_commit" access="public">
+      </function>
+      
+      <!-- POST /databasename/_missing_revs Given a list of document revisions, returns the document revisions that do not exist in the database -->
+      <function name="couchdb_db_missing_revs" access="public">
+      </function>
+
+      <!-- POST /databasename/_purge Purge some historical documents entirely from database history -->
+      <function name="couchdb_db_purge_historical_documents" access="public">
+      </function>
+
+      <!-- POST /databasename -->
+      <function name="couchdb_db_delete" access="public">
+      </function>
+      
+      <!-- to be implemented:
+      POST 	/db/_revs_diff 	Given a list of document revisions, returns differences between the given revisions and ones that are in the database
+      GET 	/db/_revs_limit 	Gets the limit of historical revisions to store for a single document in the database
+      PUT 	/db/_revs_limit 	Sets the limit of historical revisions to store for a single document in the database
+      GET 	/db/_security 	Returns the special security object for the database
+      PUT 	/db/_security 	Sets the special security object for the database
+      -->
+      
+      <!-- POST /databasename/_temp_view Execute a given view function for all documents and return the result-->
+      <function name="couchdb_db_view_execute" access="public">
+      </function>
+      
+      <!-- POST /databasename/_view_cleanup Removes view files that are not used by any design document -->
+      <function name="couchdb_db_view_cleanup" access="public">
+      </function>
+
+      <!-- CUSTOM addional functions -->
+      <function name="couchdb_document_find_by_id" access="public">
+      </function>
+      
+      <function name="couchdb_document_find_by_revision" access="public">
+      </function>
+  </class>
+</extension>
